@@ -1,0 +1,35 @@
+1. Desarrolle un diagrama de flujo como el de la imagen (hw2.png).
+
+Se utilizan un bloque "Signal Source", otro "Throttle" y uno más "QT GUI Sink" con las propiedades por defecto.
+
+2. ¿Se comporta diferente el diagrama de flujo si eliminamos el bloque "throttle" (embudo)? Si conectamos la fuente directamente al "QT GUI Sink".
+
+Como se puede ver en hw2.2.grc, si no modificamos ninguna de las propiedades de los bloques, su comportamiento no varía.
+
+3. ¿Indica el bloque "QT GUI Sink" la frecuencia correcta producida por la fuente? ¿Que ocurre si la fuente y el "QT GUI Sink" tienen diferentes "Sample Rate" (velocidad de muestreo) configurados?
+
+Mientras los Sample Rates sean iguales, la frecuencia es correcta. Sin embargo, como podemos ver en hw2.3.grc, si ponemos la frecuencia de la fuente a 5k sin modificar el "Sample rate" y en el "QT GUI Sink" marcamos el Ancho de banda (bandwidth) a 8k, vemos que la frecuencia marcada es 1.25k. Esto es lo mismo que resulta de 5/(32/8) = 1.25.  
+
+4. ¿Que ocurre si se configura la fuente de señal con varias frecuencias entre 0 y 16k?
+
+Como vemos en hw2.4.grc utilizando frecuencias entre 0 y 16k y manteniendo el resto de propiedades por defecto, la interfaz gráfica muestra la frecuencia correcta. Sin embargo, si añadimos el bloque "QT GUI Time Sink" Podemos ver como la señal se va degradando conforme aumenta la frecuencia, exceptuando en los divisores del "Sample Rate", es decir, en 4k, 8k y 16k. Esto no se a que se debe actualmente pero seguro que tiene que ver con   
+
+5. ¿Que ocurre si configuramos la fuente de señal con señales por encima de 16k? ¿Por qué ocurre?
+
+La frequencia de Nyquist es la mitad de la tasa de muestreo. Se conoce también como la frecuencia de plegado. En hw2.4.grc hemos visto como en 16k la frecuencia se muestra mitad positiva y mitad negativa. Esto se debe a que en este punto estamos a la mitad de la tasa de muestreo (32k). En hw2.5.grc podemos ver que a partir de ese momento y hasta llegar a 32k, la frecuencia se muestra negativa en la interfaz. 
+
+6. ¿Que ocurre si especificas frecuencias negativas? ¿Matematicamente hay alguna diferencia entre el cos(x) y el cos(-x)?
+
+Como vemos en hw2.6.grc si vamos desde -32k hasta 32k, lo que estamos haciendo es recorrer dos veces el rango de muestreo. Al fin y al cabo, el cos(x) = cos(-x).
+
+7. Indica la interfaz gráfica la presencia de alguna frecuencia que no sea la que produce la fuente? (Consejo: Utilize el autoescalado o incremente la escala dB/Div). ¿Cual es la amplitud aparente del ruido? ¿Por qué hay ruido?
+
+Utilizando el mismo ejemplo anterior hw2.6.grc, si utilizamos la interfaz en modo waterfall y cambiamos a negro caliente (black hot), vemos que existen lineas de calor en otras muchas frecuencias. Estas son menos potentes que la frecuencia que genera nuestra fuente, sin embargo, estan ahí. Las llamamos ruido ya que provienen de cualquier cosa que pueda afectar a la onda como el calor u otras ondas electromagnéticas.
+
+8. Pruebe a sumar varias fuentes de señal. ¿Hay alguna otra operación matemática que podamos probar?
+
+Si sumamos varias frecuencias como vemos en el ejemplo hw2.8.grc, estas aparecerán separadas en la interfaz, lo que implica que no se suman sus frecuencias convirtiendose en una misma onda. Sin embargo, si las multiplicamos ocurre exactamente eso, que se suman sus frecuencias. Si atendemos a su amplitud de onda, en el gráfico de tiempo, veremos que la amplitud de onda de la suma es el doble de la original.
+
+9. Pruebe otras formas de onda (en vez de coseno) en la fuente de señal.   
+
+El ejemplo esta en hw2.9.grc, la diferencia es casi nula ya que lo que cambia es que la onda del seno va adelantada pi/2 en comparación con la onde del coseno.
