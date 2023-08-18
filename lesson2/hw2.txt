@@ -12,7 +12,7 @@ Mientras los Sample Rates sean iguales, la frecuencia es correcta. Sin embargo, 
 
 4. ¿Que ocurre si se configura la fuente de señal con varias frecuencias entre 0 y 16k?
 
-Como vemos en hw2.4.grc utilizando frecuencias entre 0 y 16k y manteniendo el resto de propiedades por defecto, la interfaz gráfica muestra la frecuencia correcta. Sin embargo, si añadimos el bloque "QT GUI Time Sink" Podemos ver como la señal se va degradando conforme aumenta la frecuencia, exceptuando en los divisores del "Sample Rate", es decir, en 4k, 8k y 16k. Esto no se a que se debe actualmente pero seguro que tiene que ver con   
+Como vemos en hw2.4.grc utilizando frecuencias entre 0 y 16k y manteniendo el resto de propiedades por defecto, la interfaz gráfica muestra la frecuencia correcta. Sin embargo, si añadimos el bloque "QT GUI Time Sink" Podemos ver como la señal se va degradando conforme aumenta la frecuencia, exceptuando en los divisores del "Sample Rate", es decir, en 4k, 8k y 16k. Esto no se a que se debe actualmente pero seguro que tiene que ver con la amplitud de onda.
 
 5. ¿Que ocurre si configuramos la fuente de señal con señales por encima de 16k? ¿Por qué ocurre?
 
